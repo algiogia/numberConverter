@@ -64,7 +64,7 @@ public class ITDictionary implements Dictionary {
 
 	private static final Map<Integer, String> HUNDREDS;
 	static {
-		String suffix = " " + UNITS_BY_POSITION.get(100);
+		String suffix = UNITS_BY_POSITION.get(100);
 		Map<Integer, String> m = new HashMap<Integer, String>();
 		m.put(100, "cento");
 		m.put(200, TEENS.get(2) + suffix);

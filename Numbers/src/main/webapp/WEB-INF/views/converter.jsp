@@ -6,7 +6,7 @@
 <title>Nominator 1.0</title>
 </head>
 <body>
-	<h1>Please choose your number's dictionary:</h1>
+	<h2>Please enter a number to convert:</h2>
 
 	<form:form method="POST" commandName="converter">
 		<form:input path="number" />
