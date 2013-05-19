@@ -68,8 +68,8 @@ public class NumberConverter {
 		for (int digit : extractDigits(triplet)) {
 
 			if (digit != 0) {
-				resultBuffer.append(dictionary.getNumberName(digit * multiplier)
-						+ " ");
+				resultBuffer.append(dictionary
+						.getNumberName(digit * multiplier) + " ");
 			}
 			multiplier /= 10;
 		}

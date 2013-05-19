@@ -120,8 +120,9 @@ public class ITDictionary implements Dictionary {
 		String result = SPECIALS.get(number);
 
 		// ...or a teen?
-		result = TEENS.get(number);
-
+		if (result == null) {
+			result = TEENS.get(number);
+		}
 		// ...or tens?
 		if (result == null) {
 			result = TENS.get(number);

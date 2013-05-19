@@ -2,14 +2,19 @@ package com.ivano.numbers.service;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 public class NumberConverterTest {
 
-	private NumberConverter nc = new NumberConverter(new GBDictionary());
+	@Rule
+	public ExpectedException exception = ExpectedException.none();
 
 	@Test
 	public void aNumberIsConvertedToEnglish() {
+
+		NumberConverter nc = new NumberConverter(new GBDictionary());
 
 		assertEquals("zero", nc.convert(0));
 
@@ -41,12 +46,33 @@ public class NumberConverterTest {
 	}
 
 	@Test
-	public void anExceptionOccursIfNumberExceedsMaximum() {
+	public void aNumberIsConvertedToItalian() {
+
+		NumberConverter nc = new NumberConverter(new ITDictionary());
+
+		assertEquals("zero", nc.convert(0));
+
+		assertEquals("ventuno", nc.convert(21));
+
+		assertEquals("ventunomila cinquecento tre", nc.convert(21503));
 
 	}
 
 	@Test
-	public void anExceptionOccursIfInvalidNumberIsProvided() {
+	public void anExceptionOccursIfNumberExceedsMaximum() {
 
+		NumberConverter nc = new NumberConverter(new GBDictionary());
+
+		exception.expect(IllegalArgumentException.class);
+		nc.convert(1999999999);
+	}
+
+	@Test
+	public void anExceptionOccursIfNumberIsExceedsMinimum() {
+
+		NumberConverter nc = new NumberConverter(new GBDictionary());
+
+		exception.expect(IllegalArgumentException.class);
+		nc.convert(-1);
 	}
 }
